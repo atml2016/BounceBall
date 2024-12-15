@@ -1,29 +1,91 @@
+
+
 var container = document.querySelector(".container");
-
 var ball = document.getElementById("ball");
-var fun = setInterval(moveDiv, 50);
-var margin = 0;
 
-var x = 0;
-var y = 0;
+var containerHeight = container.clientHeight;
+var ballHeight = ball.clientHeight
 
-// var containerWidth = container.offsetWidth;
-// var containerHeight = container.offsetHeight;
+var x=0;
+var y=0;
 
-// var ballWidth = ball.offsetWidth;
-// var ballHeight = ball.offsetHeight;
+var gravity = 1;
+var reboundHeight = containerHeight;
+var velocity = 0;
 
-function moveDiv() {
-  margin += 5;
-  ball.style.top = margin + "px";
 
-  if (margin >= 300) {
+
+setInterval(function(){
+ 
+  velocity += gravity;
+  y += velocity;
+
+
+  
+  
+  if (y >= reboundHeight) {
     
-    margin -= 10;
-    ball.style.top = margin + "px";
+    y = reboundHeight; 
+    
+    velocity = -velocity ; 
+    y+=velocity;
+    //reboundHeight /=2;
     
   }
-}
+
+
+  ball.style.top = y + "px";
+
+
+
+
+
+
+
+
+
+
+
+
+  //ball.style.top = y + "px";
+  // if (y<=reboundHeight/2){
+  //   y=reboundHeight/2;
+  //   velocity += gravity;
+  // y += velocity;
+  // }
+
+  // if(reboundHeight<1)
+  // {
+  //   velocity = 0;
+  //   y=reboundHeight;
+  // }
+
+  // if (y<= reboundHeight/2)
+  // {
+  //   y=reboundHeight/2;
+  //   velocity +=gravity;
+  //   y+=velocity;
+  // }
+
+  
+  
+  // if ( velocity <= 0 && y <= reboundHeight ) {
+  //   y=reboundHeight;
+  //   velocity = gravity;
+  //   y+=velocity;
+
+  // }
+
+//reboundHeight /=2;
+
+
+
+
+ 
+
+
+} , 50);
+
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "a" || event.key === "A") {
@@ -38,6 +100,55 @@ document.addEventListener("keydown", function (event) {
 
     ball.style.left = x + "px";
   }
+});
+// let gravity = 0;
+// let position = 0;
+// let isFalling = true;
+
+// var x = 0;
+// var y = 0;
+
+// function moveDiv() {
+//   const containerWidth = container.clientWidth;
+
+//   const containerHeight = container.clientHeight;
+
+//   const ballWidth = ball.clientWidth;
+//   const ballHeight = ball.clientHeight;
+
+//   if (isFalling) {
+//     velocity += gravity;
+//     position += velocity;
+//     ball.style.top = velocity + "px";
+//   }
+//   if (position + ballHeight >= containerHeight) {
+//     position = containerHeight - ballHeight;
+//     isFalling = false;
+//     velocity = -Math.sqrt(bounceHeight);
+//   } else {
+//     velocity += gravity;
+//     position += velocity;
+//     ball.style.top = velocity + "px";
+
+//     if (velocity >= 0) {
+//       isFalling = true;
+//     }
+//   }
+  // gravity += 5;
+  // ball.style.top = gravity + "px";
+
+  // if (position+ballHeight >= containerHeight) {
+
+  //   gravity -= 10;
+  //   ball.style.top = gravity + "px";
+
+  // }
+
+  //ball.style.transform = `translate(${horizontalPosition}px, ${position}px)`;
+//}
+
+
+
   // if (event.key === "w" || event.key === "W") {
   //   console.log("Clicked W");
 
@@ -56,4 +167,4 @@ document.addEventListener("keydown", function (event) {
   // if (x + ballWidth <= 0 || x + ballWidth >= containerWidth) {
   //   console.log("We are at the boundary");
   // }
-});
+

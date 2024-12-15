@@ -9,7 +9,8 @@ body {
   border: 5px solid green;
   padding: 20px;
   margin: 200px;
-  position: absolute;
+  display: flexbox;
+  position: relative;
 }
 
 #ball {
@@ -18,5 +19,5 @@ body {
   height: 20px;
   border: black;
   border-radius: 50%;
-  position: relative;
+  position: absolute;
 }

@@ -1,51 +1,37 @@
-
-
 var container = document.querySelector(".container");
 var ball = document.getElementById("ball");
 
 var containerHeight = container.clientHeight;
-var ballHeight = ball.clientHeight
+var ballHeight = ball.clientHeight;
 
-var x=0;
-var y=0;
+var x = 0;
+var y = 0;
 
 var gravity = 1;
 var reboundHeight = containerHeight;
 var velocity = 0;
 
-
-
-setInterval(function(){
- 
+setInterval(function {
   velocity += gravity;
   y += velocity;
 
+  if (y >= containerHeight - ballHeight) {
 
-  
-  
-  if (y >= reboundHeight) {
     
-    y = reboundHeight; 
+    y = containerHeight - ballHeight;
+    velocity = -velocity;
     
-    velocity = -velocity ; 
-    y+=velocity;
+    reboundHeight /= 2;
+
+    if (reboundHeight < 1) {
+      velocity = 0;
+      reboundHeight = 0;
+      return;
+    }
     //reboundHeight /=2;
-    
   }
 
-
   ball.style.top = y + "px";
-
-
-
-
-
-
-
-
-
-
-
 
   //ball.style.top = y + "px";
   // if (y<=reboundHeight/2){
@@ -67,8 +53,6 @@ setInterval(function(){
   //   y+=velocity;
   // }
 
-  
-  
   // if ( velocity <= 0 && y <= reboundHeight ) {
   //   y=reboundHeight;
   //   velocity = gravity;
@@ -76,16 +60,8 @@ setInterval(function(){
 
   // }
 
-//reboundHeight /=2;
-
-
-
-
- 
-
-
-} , 50);
-
+  //reboundHeight /=2;
+}, 50);
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "a" || event.key === "A") {
@@ -134,37 +110,34 @@ document.addEventListener("keydown", function (event) {
 //       isFalling = true;
 //     }
 //   }
-  // gravity += 5;
-  // ball.style.top = gravity + "px";
+// gravity += 5;
+// ball.style.top = gravity + "px";
 
-  // if (position+ballHeight >= containerHeight) {
+// if (position+ballHeight >= containerHeight) {
 
-  //   gravity -= 10;
-  //   ball.style.top = gravity + "px";
+//   gravity -= 10;
+//   ball.style.top = gravity + "px";
 
-  // }
+// }
 
-  //ball.style.transform = `translate(${horizontalPosition}px, ${position}px)`;
+//ball.style.transform = `translate(${horizontalPosition}px, ${position}px)`;
 //}
 
+// if (event.key === "w" || event.key === "W") {
+//   console.log("Clicked W");
 
+//   y -= 5;
+//   ball.style.top = y + "px";
+// }
 
-  // if (event.key === "w" || event.key === "W") {
-  //   console.log("Clicked W");
+// if (y + ballHeight >= containerHeight) {
+//   dy = -dy;
+//   do{
+//       y+=dy;
+//   ball.style.top = y + "px";
+//   }while(y <= (containerHeight)/2);
+// }
 
-  //   y -= 5;
-  //   ball.style.top = y + "px";
-  // }
-
-  // if (y + ballHeight >= containerHeight) {
-  //   dy = -dy;
-  //   do{
-  //       y+=dy;
-  //   ball.style.top = y + "px";
-  //   }while(y <= (containerHeight)/2);
-  // }
-
-  // if (x + ballWidth <= 0 || x + ballWidth >= containerWidth) {
-  //   console.log("We are at the boundary");
-  // }
-
+// if (x + ballWidth <= 0 || x + ballWidth >= containerWidth) {
+//   console.log("We are at the boundary");
+// }
